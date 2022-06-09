@@ -53,7 +53,7 @@ type RandomizedSet struct {
 	nums        []int
 }
 
-func Constructor() RandomizedSet {
+func Constructor1() RandomizedSet {
 	return RandomizedSet{
 		valIndexMap: make(map[int]int),
 		nums:        make([]int, 0),
