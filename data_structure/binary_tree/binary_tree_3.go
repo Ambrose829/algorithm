@@ -53,3 +53,35 @@ func findDuplicateSubtrees(root *TreeNode) []*TreeNode {
 //   2
 // 1   11
 //11  1
+
+/*
+	翻转二叉树
+*/
+
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+
+// 前序后序较为简单 不做赘述，现在使用中序
+func invertTree(root *TreeNode) *TreeNode {
+	var traverse func(root *TreeNode)
+	traverse = func(root *TreeNode) {
+		if root == nil {
+			return
+		}
+
+		traverse(root.Left)
+		root.Left, root.Right = root.Right, root.Left
+		// 因为现在原本的右子树已经与左子树互换了，所以现在应该使用左子树
+		traverse(root.Left)
+	}
+
+	traverse(root)
+
+	return root
+}
